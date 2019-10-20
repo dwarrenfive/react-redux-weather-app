@@ -9,7 +9,7 @@ export default class App extends React.Component {
       <div className="m-5">
         <div className='jumbotron' >
           <h1 className='display-3'>Weather App</h1>
-          <p className='mt-3'>Always know if you'll nedd an umbrella!</p>
+          <p className='mt-3'>Always know if you'll need an umbrella!</p>
         </div>
         <div >
           <Search />
