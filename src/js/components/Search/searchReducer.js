@@ -1,5 +1,13 @@
 const defaultStore = {
-    city: []
+    city: '',
+    temperature: '',
+    pressure: '',
+    humidity: '',
+    lowestTemp: '',
+    highestTemp: '',
+    windSpeed: '',
+    error: false,
+    locations: []
 };
 
 export default function Search(state = defaultStore, action) {
@@ -7,9 +15,19 @@ export default function Search(state = defaultStore, action) {
 
     switch (type) {
         case 'GET_WEATHER': {
+            const { city, temperature, pressure, humidity, lowestTemp, highestTemp, windSpeed, error } = action.payload;
             return {
                 ...state,
-                city: payload.city
+                locations: [
+                    ...state.locations,
+                    { city, temperature, pressure, humidity, lowestTemp, highestTemp, windSpeed, error }
+                ]
+            }
+        }
+
+        case 'GET_ERROR': {
+            return {
+                error: payload.error
             }
         }
 

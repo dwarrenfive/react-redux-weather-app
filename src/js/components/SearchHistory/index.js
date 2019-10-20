@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
-import { SearchHistory } from "./SearchHistory";
+import SearchHistory from './SearchHistory';
 
 function mapStoreToProps(store) {
     return {
-        city: console.log(store.city /*tbd*/)
+        weatherResults: store.results.locations
     }
 }
 
