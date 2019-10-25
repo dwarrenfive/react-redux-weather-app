@@ -1,17 +1,18 @@
-import Axios from 'axios';
+import axios from 'axios';
 
-export default function getWeather() {
+
+export function getWeather(city) {
     return {
         type: 'GET_WEATHER',
-        payload: Axios.get('api.openweathermap.org/data/2.5/weather?q=London')
+        payload: axios.get(`/search/${city}`)
     }
 }
 
-export default function getError() {
+export function getCity() {
     return {
-        type: 'GET_ERROR',
+        type: 'GET_CITY',
         payload: {
-            error: true
+            e
         }
     }
 }

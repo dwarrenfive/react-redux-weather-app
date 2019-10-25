@@ -6,6 +6,8 @@ class SearchHistory extends React.Component {
     }
 
     render() {
+        const { weatherResults } = this.props;
+        console.log(weatherResults)
         return (
             <div className='card mb-3'>
                 <div className='card-header alert-primary'>Search History</div>
