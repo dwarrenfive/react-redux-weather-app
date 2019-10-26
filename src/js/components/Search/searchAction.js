@@ -8,11 +8,9 @@ export function getWeather(city) {
     }
 }
 
-export function getCity() {
+export function getCity(city) {
     return {
         type: 'GET_CITY',
-        payload: {
-            e
-        }
+        payload: { city }
     }
-}
+} 

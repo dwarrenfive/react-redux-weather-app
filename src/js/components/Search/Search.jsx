@@ -1,32 +1,30 @@
 import React from 'react';
 import {
     getWeather,
-    // getError
+    getCity
 } from './searchAction';
 
-class Search extends React.Component {
+export default class Search extends React.Component {
     constructor(props) {
         super(props);
-
-        this.handleWeatherData = this.handleWeatherData.bind(this);
-        this.handleError = this.handleError.bind(this);
+        this.handleCity = this.handleCity.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleCity(city) {
+    handleCity(event) {
         const { dispatch } = this.props;
         const { value } = event.target;
-        dispatch(getWeather(value))
+        dispatch(getCity(value));
     }
 
-    handleClick() {
+    handleClick(event) {
         event.preventDefault()
         const { dispatch, city } = this.props;
-        dispatch(getWeather(city))
+        dispatch(getWeather(city));
     }
 
     render() {
-        const { locations } = this.props;
-        console.log(locations)
+        const { city } = this.props;
         return (
             <div>
                 <div className="btn-group btn-group" role="group">
@@ -39,8 +37,8 @@ class Search extends React.Component {
                 <form>
                     <div className='form-group'>
                         <div className="input-group">
-                            <input type="text" onChange={this.handleWeatherData} className="form-control" placeholder="San Diego" />
-                            <span className='btn input-group-addon'>Go!</span>
+                            <input type="text" value={city} onChange={this.handleCity} className="form-control" placeholder="San Diego" />
+                            <span onClick={this.handleClick} className='btn input-group-addon'>Go!</span>
                         </div>
                     </div>
                 </form>
@@ -48,5 +46,3 @@ class Search extends React.Component {
         )
     }
 }
-
-export default Search;

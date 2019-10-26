@@ -6,34 +6,20 @@ class SearchHistory extends React.Component {
     }
 
     render() {
-        const { weatherResults } = this.props;
-        console.log(weatherResults)
+        const { history } = this.props;
+        console.log("history", this.props)
         return (
             <div className='card mb-3'>
                 <div className='card-header alert-primary'>Search History</div>
                 <div className='card-body'>
                     <table className='table table-sm table-striped'>
                         <tbody>
-                            <tr>
-                                <td>San Diego</td>
-                                <td style={{ width: 120 }}>Time 9:45am</td>
-                            </tr>
-                            <tr>
-                                <td>New York</td>
-                                <td style={{ width: 120 }}>Time 9:46am</td>
-                            </tr>
-                            <tr>
-                                <td>Tokyo</td>
-                                <td style={{ width: 120 }}>Time 9:47am</td>
-                            </tr>
-                            <tr>
-                                <td>Washington D.C.</td>
-                                <td style={{ width: 120 }}>Time 9:48am</td>
-                            </tr>
-                            <tr>
-                                <td>London</td>
-                                <td style={{ width: 120 }}>Time 9:49am</td>
-                            </tr>
+                            {history.map(location =>
+                                <tr key={location.city}>
+                                    <td>{location.city}</td>
+                                    <td style={{ width: 120 }}>{new Date().toLocaleString()}</td>
+                                </tr>
+                            )}
                         </tbody>
                     </table>
                 </div>

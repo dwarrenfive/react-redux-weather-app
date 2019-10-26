@@ -1,33 +1,44 @@
 const defaultStore = {
     city: '',
-    temperature: '',
+    temp: '',
     pressure: '',
     humidity: '',
     lowestTemp: '',
     highestTemp: '',
     windSpeed: '',
-    error: false,
-    locations: []
+    lon: '',
+    lat: '',
+    history: []
 };
 
-export default function Search(state = defaultStore, action) {
+export default function searchReducer(state = defaultStore, action) {
     const { type, payload } = action;
-
     switch (type) {
-        case 'GET_WEATHER': {
-            const { city, temperature, pressure, humidity, lowestTemp, highestTemp, windSpeed, error } = action.payload;
+        case 'GET_WEATHER_FULFILLED': {
             return {
                 ...state,
-                locations: [
-                    ...state.locations,
-                    { city, temperature, pressure, humidity, lowestTemp, highestTemp, windSpeed, error }
+                city: payload.data.name,
+                temp: payload.data.main.temp,
+                pressure: payload.data.main.pressure,
+                humidity: payload.data.main.humidity,
+                lowestTemp: payload.data.main.temp_min,
+                highestTemp: payload.data.main.temp_max,
+                windSpeed: payload.data.wind.speed,
+                lat: payload.data.coord.lat,
+                lon: payload.data.coord.lon,
+                history: [
+                    ...state.history,
+                    {
+                        city: payload.data.name
+                    }
                 ]
             }
         }
 
-        case 'GET_ERROR': {
+        case 'GET_CITY': {
             return {
-                error: payload.error
+                ...state,
+                city: payload.city
             }
         }
 
