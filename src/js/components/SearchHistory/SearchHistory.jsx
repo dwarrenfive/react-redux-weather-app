@@ -13,12 +13,14 @@ class SearchHistory extends React.Component {
                 <div className='card-body'>
                     <table className='table table-sm table-striped'>
                         <tbody>
-                            {history.map(location =>
-                                <tr key={Math.random(1000)}>
-                                    <td>{location.city}</td>
-                                    <td style={{ width: 120 }}>{new Date().toLocaleString()}</td>
-                                </tr>
-                            )}
+                            {history == 0 ? 'Welcome! Enter something above to start tracking.'
+                                :
+                                history.map(location =>
+                                    <tr key={Math.random(1000)}>
+                                        <td>{location.city}</td>
+                                        <td style={{ width: 120 }}>{new Date().toLocaleString()}</td>
+                                    </tr>
+                                )}
                         </tbody>
                     </table>
                 </div>
