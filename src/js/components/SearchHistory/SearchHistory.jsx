@@ -7,7 +7,6 @@ class SearchHistory extends React.Component {
 
     render() {
         const { history } = this.props;
-        console.log("history", this.props)
         return (
             <div className='card mb-3'>
                 <div className='card-header alert-primary'>Search History</div>
@@ -15,7 +14,7 @@ class SearchHistory extends React.Component {
                     <table className='table table-sm table-striped'>
                         <tbody>
                             {history.map(location =>
-                                <tr key={location.city}>
+                                <tr key={Math.random(1000)}>
                                     <td>{location.city}</td>
                                     <td style={{ width: 120 }}>{new Date().toLocaleString()}</td>
                                 </tr>

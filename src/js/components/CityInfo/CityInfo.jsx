@@ -6,7 +6,7 @@ export default class CityInfo extends React.Component {
     }
 
     render() {
-        const { city, temp, pressure, humidity, lowestTemp, highestTemp, windSpeed, lat, lon } = this.props;
+        const { city, temp, pressure, humidity, lowestTemp, highestTemp, windSpeed, lat, lon, icon } = this.props;
         return (
             <div className='card mb-3'>
                 <div className='card-header alert-primary'>City Information</div>
@@ -14,6 +14,7 @@ export default class CityInfo extends React.Component {
                     <div className='container' id="city-info">
                         <div className='row justify-content-center'>
                             <div className='col-6 text-center'>
+                                <img src={`https://openweathermap.org/img/wn/${icon}@2x.png`} />
                                 <h2 className='h2 strong'>{city}</h2>
                                 <p id="lat-lon" className="">Lat/Long: {lat}, {lon}</p>
                             </div>

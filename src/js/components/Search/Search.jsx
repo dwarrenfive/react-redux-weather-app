@@ -7,6 +7,10 @@ import {
 export default class Search extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            textArea: ''
+        }
+
         this.handleCity = this.handleCity.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
@@ -20,7 +24,11 @@ export default class Search extends React.Component {
     handleClick(event) {
         event.preventDefault()
         const { dispatch, city } = this.props;
-        dispatch(getWeather(city));
+        const { value } = event.target;
+        dispatch(getWeather(value || city));
+        this.setState({
+            textArea: ''
+        })
     }
 
     render() {
@@ -28,16 +36,16 @@ export default class Search extends React.Component {
         return (
             <div>
                 <div className="btn-group btn-group" role="group">
-                    <button type="button" className="btn btn-info">San Diego</button>
-                    <button type="button" className="btn btn-info">New York</button>
-                    <button type="button" className="btn btn-info">Tokyo</button>
-                    <button type="button" className="btn btn-info">Washington D.C.</button>
-                    <button type="button" className="btn btn-info">London</button>
+                    <button type="button" value="san diego" onClick={this.handleClick} className="btn btn-info">San Diego</button>
+                    <button type="button" value="new york" onClick={this.handleClick} className="btn btn-info">New York</button>
+                    <button type="button" value="tokyo" onClick={this.handleClick} className="btn btn-info">Tokyo</button>
+                    <button type="button" value="fresno" onClick={this.handleClick} className="btn btn-info">Fresno</button>
+                    <button type="button" value="london" onClick={this.handleClick} className="btn btn-info">London</button>
                 </div>
                 <form>
                     <div className='form-group'>
                         <div className="input-group">
-                            <input type="text" value={city} onChange={this.handleCity} className="form-control" placeholder="San Diego" />
+                            <input type="text" value={city} onChange={this.handleCity} className="form-control" placeholder="Enter city i.e., San Diego" />
                             <span onClick={this.handleClick} className='btn input-group-addon'>Go!</span>
                         </div>
                     </div>

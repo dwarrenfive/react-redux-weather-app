@@ -12,7 +12,8 @@ function mapStoreToProps(store) {
         highestTemp: store.search.highestTemp,
         windSpeed: store.search.windSpeed,
         lat: store.search.lat,
-        lon: store.search.lon
+        lon: store.search.lon,
+        icon: store.search.icon
     }
 }
 

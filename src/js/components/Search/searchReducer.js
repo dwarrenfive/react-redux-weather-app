@@ -8,6 +8,7 @@ const defaultStore = {
     windSpeed: '',
     lon: '',
     lat: '',
+    icon: '04n',
     history: []
 };
 
@@ -26,6 +27,7 @@ export default function searchReducer(state = defaultStore, action) {
                 windSpeed: payload.data.wind.speed,
                 lat: payload.data.coord.lat,
                 lon: payload.data.coord.lon,
+                icon: payload.data.weather[0].icon,
                 history: [
                     ...state.history,
                     {
