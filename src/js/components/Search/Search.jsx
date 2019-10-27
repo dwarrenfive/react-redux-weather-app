@@ -7,9 +7,6 @@ import {
 export default class Search extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            textArea: ''
-        }
 
         this.handleCity = this.handleCity.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -27,9 +24,6 @@ export default class Search extends React.Component {
         const { dispatch, city } = this.props;
         const { value } = event.target;
         dispatch(getWeather(value || city));
-        this.setState({
-            textArea: ''
-        })
     }
 
     _handleKeyPress(event) {
