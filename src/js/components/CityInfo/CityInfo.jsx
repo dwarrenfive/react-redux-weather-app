@@ -7,7 +7,6 @@ export default class CityInfo extends React.Component {
 
     render() {
         const { city, temp, pressure, humidity, lowestTemp, highestTemp, windSpeed, lat, lon, icon } = this.props;
-        console.log(this.props)
         return (
             <div className='card mb-3'>
                 <div className='card-header alert-primary'>City Information</div>
