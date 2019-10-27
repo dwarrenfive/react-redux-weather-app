@@ -13,6 +13,7 @@ export default class Search extends React.Component {
 
         this.handleCity = this.handleCity.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this._handleKeyPress = this._handleKeyPress.bind(this);
     }
 
     handleCity(event) {
@@ -31,6 +32,14 @@ export default class Search extends React.Component {
         })
     }
 
+    _handleKeyPress(event) {
+        const { dispatch, city } = this.props;
+        const { value } = event.target;
+        if (event.key === 'Enter') {
+            return dispatch(getWeather(value || city));
+        }
+    }
+
     render() {
         const { city } = this.props;
         return (
@@ -42,14 +51,13 @@ export default class Search extends React.Component {
                     <button type="button" value="fresno" onClick={this.handleClick} className="btn btn-info">Fresno</button>
                     <button type="button" value="london" onClick={this.handleClick} className="btn btn-info">London</button>
                 </div>
-                <form>
-                    <div className='form-group'>
-                        <div className="input-group">
-                            <input type="text" value={city} onChange={this.handleCity} className="form-control" placeholder="Enter city i.e., San Diego" />
-                            <span onClick={this.handleClick} className='btn input-group-addon'>Go!</span>
-                        </div>
+                <div className='form-group'>
+                    <div className="input-group">
+                        <input type="text" value={city} onChange={this.handleCity} className="form-control"
+                            onKeyPress={this._handleKeyPress} placeholder="Enter city i.e., San Diego" />
+                        <span onClick={this.handleClick} id='enter' className='btn input-group-addon'>Go!</span>
                     </div>
-                </form>
+                </div>
             </div>
         )
     }
